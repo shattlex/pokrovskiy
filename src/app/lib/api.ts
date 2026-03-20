@@ -15,8 +15,14 @@ type ErrorDetail = {
   message?: string;
 };
 
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
+
+function apiUrl(path: string) {
+  return API_BASE ? `${API_BASE}${path}` : path;
+}
+
 export async function submitContact(payload: ContactPayload) {
-  const response = await fetch("/api/contact", {
+  const response = await fetch(apiUrl("/api/contact"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +41,7 @@ export async function submitContact(payload: ContactPayload) {
 }
 
 export function trackButtonClick(payload: ActionPayload) {
-  void fetch("/api/actions/click", {
+  void fetch(apiUrl("/api/actions/click"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
