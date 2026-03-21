@@ -1,5 +1,4 @@
 ﻿import { motion } from "motion/react";
-import { useInView } from "motion/react";
 import { useRef } from "react";
 import { Mail, Send } from "lucide-react";
 
@@ -77,14 +76,13 @@ const team: TeamMember[] = [
 
 export function Team() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <section ref={ref} className="py-24 bg-[#F7F8FA]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -114,7 +112,7 @@ export function Team() {
             <motion.div
               key={member.name}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
             >

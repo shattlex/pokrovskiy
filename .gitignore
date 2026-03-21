@@ -14,6 +14,7 @@ pnpm-debug.log*
 
 server/data/leads.json
 server/data/button-events.json
+deploy/
 
 .DS_Store
 Thumbs.db
